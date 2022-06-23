@@ -5,8 +5,6 @@ commands:
       - run:
           name: Install Web gems with bundler
           command: bundle install
-          environment:
-            RAILS_ENV: test
   setup-postgresql-db-command:
     steps:
       - run:
