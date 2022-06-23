@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.version     = RoarResponder::VERSION
   spec.authors     = ['Marta Noya']
 
-  spec.summary = 'TODO: Write a short summary, because RubyGems requires one.'
-  spec.description = 'TODO: Write a longer description or delete this line.'
+  spec.summary  = 'Render roar representers as responses in Rails'
   spec.homepage = 'https://github.com/Martouta/roar_responder'
 
   spec.metadata = {
