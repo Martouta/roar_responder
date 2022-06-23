@@ -5,7 +5,4 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in roar_responder.gemspec
 gemspec
 
-gem 'minitest', '~> 5.0'
-gem 'pg'
-gem 'rails', '>= 5.2', '<= 7.0'
 gem 'rake', '~> 13.0'
