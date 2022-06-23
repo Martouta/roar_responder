@@ -1,17 +1,3 @@
-commands:
-  install-gems-command:
-    steps:
-      - checkout
-      - run:
-          name: Install Web gems with bundler
-          command: bundle install
-  setup-postgresql-db-command:
-    steps:
-      - run:
-          name: Setup PostgreSQL DB
-          command: ./test/dummy/bin/setup 
-          environment:
-            RAILS_ENV: test
 jobs:
   roar-responder-job:
     docker:
@@ -22,8 +8,13 @@ jobs:
         image: postgres:13.2
     resource_class: small
     steps:
-      - install-gems-command
-      - setup-postgresql-db-command
+      - checkout
+      - run:
+          name: Install root gems
+          command: bundle install
+      - run:
+          name: Setup Dummy
+          command: ./test/dummy/bin/setup
       - run:
           name: Run tests
           command: bundle exec rake test
