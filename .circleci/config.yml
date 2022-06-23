@@ -15,7 +15,7 @@ commands:
 jobs:
   roar-responder-job:
     docker:
-      - image: ruby:2.6-slim
+      - image: ruby:2.6
       - image: mongo:5.0.3
       - environment:
           POSTGRES_PASSWORD: password
