@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 ENV['RAILS_ENV'] ||= 'test'
+
+require File.expand_path('dummy/config/environment.rb', __dir__)
+
 require 'rails/test_help'
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
@@ -12,8 +15,6 @@ require 'database_cleaner/mongoid'
 require 'factory_bot_rails'
 
 Dir["#{File.dirname(__FILE__)}/test_helpers/roar_responder/**/*.rb"].each { |file| require file }
-
-require File.expand_path('dummy/config/environment.rb', __dir__)
 
 module ActiveSupport
   class TestCase
