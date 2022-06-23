@@ -1,14 +1,43 @@
-# TODO
-version: 2.1
-jobs:
-  build:
-    docker:
-      - image: ruby:2.6-slim
+commands:
+  install-gems-command:
     steps:
       - checkout
       - run:
-          name: Run the default task
-          command: |
-            gem install bundler -v 2.3.7
-            bundle install
-            bundle exec rake
+          name: Install Web gems with bundler
+          command: bundle install
+          environment:
+            BUNDLE_FROZEN: true
+            BUNDLE_JOBS: 3
+            BUNDLE_RETRY: 3
+            RAILS_ENV: test
+  setup-postgresql-db-command:
+    steps:
+      - run:
+          name: Setup PostgreSQL DB
+          command: bundle exec rake db:drop db:create db:schema:load  
+          environment:
+            RAILS_ENV: test
+jobs:
+  roar-responder-job:
+    docker:
+      - image: ruby:2.6-slim
+      - image: mongo:5.0.3
+      - environment:
+          POSTGRES_PASSWORD: password
+        image: postgres:13.2
+    resource_class: small
+    steps:
+      - install-gems-command
+      - setup-postgresql-db-command
+      - run:
+          name: Run tests
+          command: bundle exec rake test
+version: 2.1
+workflows:
+  roar-responder-workflow:
+    jobs:
+      - hold:
+          type: approval
+      - roar-responder-job:
+          requires:
+            - hold
