@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.version     = RoarResponder::VERSION
   spec.authors     = ['Marta Noya']
 
-  spec.summary = 'TODO: Write a short summary, because RubyGems requires one.'
-  spec.description = 'TODO: Write a longer description or delete this line.'
+  spec.summary  = 'Render roar representers as responses in Rails'
   spec.homepage = 'https://github.com/Martouta/roar_responder'
 
   spec.metadata = {
@@ -19,10 +18,6 @@ Gem::Specification.new do |spec|
     'rubygems_mfa_required' => 'true'
   }
 
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split('\x0').reject do |f|
-      (f == __FILE__) || f.match(%r{\A(?:(?:bin|test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
-    end
-  end
+  spec.files = Dir['lib}/**/*', 'Rakefile', 'LICENSE']
   spec.require_paths = ['lib']
 end

@@ -6,15 +6,12 @@ commands:
           name: Install Web gems with bundler
           command: bundle install
           environment:
-            BUNDLE_FROZEN: true
-            BUNDLE_JOBS: 3
-            BUNDLE_RETRY: 3
             RAILS_ENV: test
   setup-postgresql-db-command:
     steps:
       - run:
           name: Setup PostgreSQL DB
-          command: bundle exec rake db:drop db:create db:schema:load  
+          command: ./test/dummy/bin/setup 
           environment:
             RAILS_ENV: test
 jobs:
