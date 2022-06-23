@@ -1,0 +1,34 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+
+Lint/EmptyClass:
+  Enabled: false
+
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/OpenStructUse:
+  Exclude:
+    - 'test'
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
