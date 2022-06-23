@@ -1,0 +1,5 @@
+[*]
+indent_style = space
+
+[*.{rake,rb}]
+indent_size = 2
