@@ -31,6 +31,13 @@ module Integration
         items.each(&method(:assert_response_entity))
       end
 
+      def test_post_entity_success
+        post instance_active_record_entity_path, params: {model: dummy_attrs}, as: :json
+
+        assert_response :created
+        assert_response_entity JSON.parse(response.body)
+      end
+
       private
 
       def assert_response_entity(response_entity)
