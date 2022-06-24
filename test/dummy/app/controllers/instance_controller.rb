@@ -12,7 +12,8 @@ class InstanceController < ApplicationController
   end
 
   def post_active_record_entity
-    render json: {}
+    entity = DummyActiveRecordModel.create!(**params[:model].permit!)
+    respond_with entity, representer_class: DummyRepresenter
   end
 
   def get_mongo_entity
