@@ -56,4 +56,46 @@ class TestRoarResponder < Minitest::Test
       assert JSON.parse(representer.to_json)
     end
   end
+
+  class IntegrationTest < ActionDispatch::IntegrationTest
+    def test_todo_wip
+      get class_active_record_entity_path
+      assert_response :ok
+      assert_equal '{}', response.body
+
+      get class_active_record_collection_path
+      assert_response :ok
+      assert_equal '{}', response.body
+
+      post class_active_record_entity_path, params: {}
+      # assert_response :created
+      assert_equal '{}', response.body
+
+      get class_mongo_entity_path
+      assert_response :ok
+      assert_equal '{}', response.body
+
+      get class_mongo_collection_path
+      assert_response :ok
+      assert_equal '{}', response.body
+
+      post class_mongo_entity_path, params: {}
+      # assert_response :created
+      assert_equal '{}', response.body
+
+      get class_poro_entity_path
+      assert_response :ok
+      assert_equal '{}', response.body
+
+      get class_poro_collection_path
+      assert_response :ok
+      assert_equal '{}', response.body
+
+      post class_poro_entity_path, params: {}
+      # assert_response :created
+      assert_equal '{}', response.body
+
+      # TODO: create error case !!
+    end
+  end
 end
