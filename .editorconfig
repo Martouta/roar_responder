@@ -1,5 +1,5 @@
 [*]
 indent_style = space
 
-[*.{rake,rb}]
+[*.{rake,rb,yml}]
 indent_size = 2
