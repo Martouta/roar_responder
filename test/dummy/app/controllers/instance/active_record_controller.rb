@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 
 module Instance
-  class ActiveRecordController < ApplicationController
-    def show
-      entity = DummyActiveRecordModel.find(params[:id])
-      respond_with entity, representer_class: DummyRepresenter
+  class ActiveRecordController < InstanceController
+    private
+    
+    def find_entity
+      DummyActiveRecordModel.find(params[:id])
     end
 
-    def index
-      collection = DummyActiveRecordModel.all
-      respond_with collection, representer_class: DummyCollectionRepresenter
+    def collection
+      DummyActiveRecordModel.all
     end
 
-    def create
+    def new_entity
       attributes = params[:model].permit!.to_h.symbolize_keys
-      entity = DummyActiveRecordModel.create(**attributes)
-      respond_with entity, representer_class: DummyRepresenter
+      DummyActiveRecordModel.create(**attributes)
     end
   end
 end

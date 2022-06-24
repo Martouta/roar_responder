@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 
 module Instance
-  class MongoController < ApplicationController
-    def show
-      entity = DummyMongoModel.find(params[:id])
-      respond_with entity, representer_class: DummyRepresenter
+  class MongoController < InstanceController
+    private
+    
+    def find_entity
+      DummyMongoModel.find(params[:id])
     end
 
-    def index
-      collection = DummyMongoModel.all
-      respond_with collection, representer_class: DummyCollectionRepresenter
+    def collection
+      DummyMongoModel.all
     end
 
-    def create
+    def new_entity
       attributes = params[:model].permit!.to_h.symbolize_keys
       entity = DummyMongoModel.create(**attributes)
-      respond_with entity, representer_class: DummyRepresenter
     end
   end
 end
