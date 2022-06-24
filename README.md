@@ -1,10 +1,13 @@
 # RoarRepresenter
 
-The purpose of this gem is to use `roar` representers with `respond_with` in a way that you can use multiple representers for the same model and for the same controller but without being mandatory.
+📗 The purpose of this gem is to use `roar` representers with `respond_with` in a way that you can use multiple representers for the same model and for the same controller but without being mandatory.
 
 It contains the bare minimum to easily render roar representers as responses in Rails. It is a much simpler gem than `roar-rails`. But it also supports MongoID.
 I'm ensuring that it renders well for JSON but I have not checked it for XML.
 Another limitation is that I've only made it work for class representers and not for module representers.
+
+⚠️ The main branch is used for development. It is not a stable branch for usage.
+Please, use a release instead. Preferably, the latest.
 
 ## Installation
 
