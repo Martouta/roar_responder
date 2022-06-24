@@ -16,8 +16,8 @@ require 'factory_bot_rails'
 
 Dir["#{File.dirname(__FILE__)}/test_helpers/roar_responder/**/*.rb"].each { |file| require file }
 
-module ActiveSupport
-  class TestCase
+module Minitest
+  class Test
     def before_setup
       super
       config_db_clear_strategy

@@ -15,4 +15,4 @@ module RoarResponder
   end
 end
 
-ActiveSupport::TestCase.include ::RoarResponder::TestHelpers::ClearDataHelper
+Minitest::Test.include ::RoarResponder::TestHelpers::ClearDataHelper
