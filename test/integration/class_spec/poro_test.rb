@@ -3,17 +3,17 @@
 require 'test_helper'
 
 module Integration
-  module Instance
+  module ClassSpec
     class PoroTest < ActionDispatch::IntegrationTest
       def test_get_entity
-        get instance_poro_path(id: 1), as: :json
+        get class_spec_poro_path(id: 1), as: :json
 
         assert_response :ok
         assert_response_entity JSON.parse(response.body)
       end
 
       def test_get_collection
-        get instance_poro_index_path, as: :json
+        get class_spec_poro_index_path, as: :json
 
         assert_response :ok
 
@@ -27,14 +27,14 @@ module Integration
       end
 
       def test_post_entity_success
-        post instance_poro_index_path, params: { model: dummy_attrs }, as: :json
+        post class_spec_poro_index_path, params: { model: dummy_attrs }, as: :json
 
         assert_response :created
         assert_response_entity JSON.parse(response.body)
       end
 
       def test_post_entity_failure
-        post instance_poro_index_path, params: { model: dummy_invalid_attrs }, as: :json
+        post class_spec_poro_index_path, params: { model: dummy_invalid_attrs }, as: :json
 
         assert_response :unprocessable_entity
         assert_response_error JSON.parse(response.body)

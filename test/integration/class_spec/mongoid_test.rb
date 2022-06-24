@@ -3,17 +3,22 @@
 require 'test_helper'
 
 module Integration
-  module Instance
-    class PoroTest < ActionDispatch::IntegrationTest
+  module ClassSpec
+    class MongoidTest < ActionDispatch::IntegrationTest
       def test_get_entity
-        get instance_poro_path(id: 1), as: :json
+        entity = DummyMongoModel.create(**dummy_attrs)
+
+        get class_spec_mongo_path(entity), as: :json
 
         assert_response :ok
         assert_response_entity JSON.parse(response.body)
       end
 
       def test_get_collection
-        get instance_poro_index_path, as: :json
+        collection_size = 2
+        collection_size.times { DummyMongoModel.create(**dummy_attrs) }
+
+        get class_spec_mongo_index_path, as: :json
 
         assert_response :ok
 
@@ -22,19 +27,19 @@ module Integration
         assert_self_link(response_collection, 'dummy_collection', '/collection')
 
         items = response_collection.dig('dummy_collection', 'items') || []
-        assert_equal 2, items.length
+        assert_equal collection_size, items.length
         items.each(&method(:assert_response_entity))
       end
 
       def test_post_entity_success
-        post instance_poro_index_path, params: { model: dummy_attrs }, as: :json
+        post class_spec_mongo_index_path, params: { model: dummy_attrs }, as: :json
 
         assert_response :created
         assert_response_entity JSON.parse(response.body)
       end
 
       def test_post_entity_failure
-        post instance_poro_index_path, params: { model: dummy_invalid_attrs }, as: :json
+        post class_spec_mongo_index_path, params: { model: dummy_invalid_attrs }, as: :json
 
         assert_response :unprocessable_entity
         assert_response_error JSON.parse(response.body)
