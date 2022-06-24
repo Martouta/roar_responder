@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'database_cleaner-active_record', '~> 2.0.1'
   spec.add_development_dependency 'database_cleaner-mongoid', '~> 2.0.1'
-  spec.add_development_dependency 'factory_bot_rails', '~> 6.1.0'
   spec.add_development_dependency 'minitest', '~> 5.0'
   spec.add_development_dependency 'mongoid', '~> 7.3.4'
   spec.add_development_dependency 'pg', '~> 1.2.3'

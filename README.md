@@ -18,11 +18,23 @@ And then execute:
 bundle install
 ```
 
-TODO: require in case of usage inside an engine
+## Dependencies
+
+TODO
 
 ## Usage
 
-TODO: Write usage instructions here
+Include the concern (module) in the controller(s) you want with this line:
+
+```ruby
+include ::RoarResponder::ControllerRespondable
+```
+
+If you want to use this gem inside a `Rails::Engine`, require the gem by adding the following line in `lib/{YOUR_ENGINE}/engine.rb`.
+
+```ruby
+require 'roar_responder'
+```
 
 ## Development
 
