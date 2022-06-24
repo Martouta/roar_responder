@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'multi_json', '~> 1.15.0'
   spec.add_dependency 'rails', '>= 5.2', '<= 7.0'
   spec.add_dependency 'responders', '~> 3.0'
+  spec.add_dependency 'roar', '~> 1.1.0'
 
   spec.add_development_dependency 'database_cleaner-active_record', '~> 2.0.1'
   spec.add_development_dependency 'database_cleaner-mongoid', '~> 2.0.1'
