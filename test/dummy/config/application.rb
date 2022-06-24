@@ -2,6 +2,7 @@
 
 require 'rails'
 require 'mongoid'
+require 'roar_responder'
 require 'active_model/railtie'
 require 'active_record/railtie'
 require 'action_controller/railtie'
