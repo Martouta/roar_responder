@@ -3,7 +3,7 @@
 module RoarResponder
   module ControllerRespondable
     extend ActiveSupport::Concern
-  
+
     included do
       self.responder = RoarResponder::Responder
     end
