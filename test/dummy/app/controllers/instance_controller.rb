@@ -2,7 +2,8 @@
 
 class InstanceController < ApplicationController
   def get_active_record_entity
-    render json: {}
+    entity = DummyActiveRecordModel.last!
+    respond_with entity, representer_class: DummyRepresenter
   end
 
   def post_active_record_entity

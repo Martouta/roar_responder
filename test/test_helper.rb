@@ -12,7 +12,6 @@ require 'roar_responder'
 require 'minitest/autorun'
 require 'database_cleaner/active_record'
 require 'database_cleaner/mongoid'
-require 'factory_bot_rails'
 
 Dir["#{File.dirname(__FILE__)}/test_helpers/roar_responder/**/*.rb"].sort.each { |file| require file }
 
