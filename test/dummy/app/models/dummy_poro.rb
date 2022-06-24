@@ -3,6 +3,7 @@
 class DummyPoro
   include ActiveModel::Conversion # Respond to to_model
   extend ActiveModel::Naming # Respond to model_name
+  include ActiveModel::Serialization
 
   def initialize(dummy_integer: 42, dummy_string: 'bar', valid: true)
     @dummy_integer = dummy_integer
