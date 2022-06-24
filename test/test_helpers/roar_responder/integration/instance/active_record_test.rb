@@ -26,4 +26,3 @@ module Integration
     end
   end
 end
-

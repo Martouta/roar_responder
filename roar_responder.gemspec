@@ -9,7 +9,11 @@ Gem::Specification.new do |spec|
   spec.version     = RoarResponder::VERSION
   spec.authors     = ['Marta Noya']
 
-  spec.summary  = 'Render roar representers as responses in Rails'
+  spec.summary = 'Render roar representers as responses in Rails'
+  spec.description = <<~EOF
+    Use roar representers with respond_with in a way that you can easily use multiple representers for the same model and for the same controller but without being mandatory.
+    Support ActiveRecord, Mongoid, and any Ruby object that responds to `to_model` and `model_name`.
+  EOF
   spec.homepage = 'https://github.com/Martouta/roar_responder'
 
   spec.metadata = {
