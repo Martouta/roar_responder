@@ -24,16 +24,16 @@ TODO
 
 ## Usage
 
-Require adding the following line to `config/application.rb` for the root of a Rails app or in `lib/{YOUR_ENGINE}/engine.rb` for a Rails::Engine.
-
-```ruby
-require 'roar_responder'
-```
-
-Finally, include the concern (module) in the controller(s) you want with:
+Include the concern (module) in the controller(s) you want with this line:
 
 ```ruby
 include ::RoarResponder::ControllerRespondable
+```
+
+If you want to use this gem inside a `Rails::Engine`, require the gem by adding the following line in `lib/{YOUR_ENGINE}/engine.rb`.
+
+```ruby
+require 'roar_responder'
 ```
 
 ## Development
