@@ -15,8 +15,8 @@ require 'database_cleaner/mongoid'
 
 Dir["#{File.dirname(__FILE__)}/test_helpers/roar_responder/**/*.rb"].sort.each { |file| require file }
 
-module Minitest
-  class Test
+module ActionDispatch
+  class IntegrationTest
     def before_setup
       super
       config_db_clear_strategy
