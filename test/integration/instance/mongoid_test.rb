@@ -40,7 +40,7 @@ module Integration
 
       def test_post_entity_failure
         post instance_mongo_entity_path, params: { model: dummy_attrs.merge('dummy_string' => 'invalid') },
-                                                 as: :json
+                                         as: :json
 
         assert_response :unprocessable_entity
         assert_response_error JSON.parse(response.body)

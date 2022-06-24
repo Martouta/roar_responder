@@ -21,12 +21,12 @@ class InstanceController < ApplicationController
     entity = DummyMongoModel.last
     respond_with entity, representer_class: DummyRepresenter
   end
-  
+
   def get_mongo_collection
     collection = DummyMongoModel.all
     respond_with collection, representer_class: DummyCollectionRepresenter
   end
-  
+
   def post_mongo_entity
     attributes = params[:model].permit!.to_h.symbolize_keys
     entity = DummyMongoModel.create(**attributes)
