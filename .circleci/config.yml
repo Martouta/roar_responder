@@ -22,8 +22,4 @@ version: 2.1
 workflows:
   roar-responder-workflow:
     jobs:
-      - hold:
-          type: approval
-      - roar-responder-job:
-          requires:
-            - hold
+      - roar-responder-job
