@@ -20,7 +20,7 @@ bundle install
 
 ## Dependencies
 
-TODO
+This gem requires to be used inside Rails alongside the gems [roar](https://github.com/trailblazer/roar) and [responders](https://github.com/heartcombo/responders).
 
 ## Usage
 
