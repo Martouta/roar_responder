@@ -6,9 +6,9 @@ module Integration
   module Instance
     class ActiveRecordTest < ActionDispatch::IntegrationTest
       def test_get_entity
-        DummyActiveRecordModel.create(**dummy_attrs)
+        entity = DummyActiveRecordModel.create(**dummy_attrs)
 
-        get instance_active_record_entity_path, as: :json
+        get instance_active_record_path(entity), as: :json
 
         assert_response :ok
         assert_response_entity JSON.parse(response.body)
@@ -18,7 +18,7 @@ module Integration
         collection_size = 2
         collection_size.times { DummyActiveRecordModel.create(**dummy_attrs) }
 
-        get instance_active_record_collection_path, as: :json
+        get instance_active_record_index_path, as: :json
 
         assert_response :ok
 
@@ -32,14 +32,14 @@ module Integration
       end
 
       def test_post_entity_success
-        post instance_active_record_entity_path, params: { model: dummy_attrs }, as: :json
+        post instance_active_record_index_path, params: { model: dummy_attrs }, as: :json
 
         assert_response :created
         assert_response_entity JSON.parse(response.body)
       end
 
       def test_post_entity_failure
-        post instance_active_record_entity_path, params: { model: dummy_attrs.merge('dummy_string' => 'invalid') },
+        post instance_active_record_index_path, params: { model: dummy_attrs.merge('dummy_string' => 'invalid') },
                                                  as: :json
 
         assert_response :unprocessable_entity

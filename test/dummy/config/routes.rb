@@ -25,15 +25,9 @@ Rails.application.routes.draw do
   post '/infer/poro_entity', to: 'infer#post_poro_entity'
   get '/infer/poro_collection', to: 'infer#get_poro_collection'
 
-  get '/instance/active_record_entity', to: 'instance#get_active_record_entity'
-  post '/instance/active_record_entity', to: 'instance#post_active_record_entity'
-  get '/instance/active_record_collection', to: 'instance#get_active_record_collection'
-
-  get '/instance/mongo_entity', to: 'instance#get_mongo_entity'
-  post '/instance/mongo_entity', to: 'instance#post_mongo_entity'
-  get '/instance/mongo_collection', to: 'instance#get_mongo_collection'
-
-  get '/instance/poro_entity', to: 'instance#get_poro_entity'
-  post '/instance/poro_entity', to: 'instance#post_poro_entity'
-  get '/instance/poro_collection', to: 'instance#get_poro_collection'
+  namespace 'instance' do
+    resources :active_record, only: %i[create index show]
+    resources :mongo, only: %i[create index show]
+    resources :poro, only: %i[create index show]
+  end
 end
