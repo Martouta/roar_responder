@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails'
+require 'mongoid'
 require 'active_model/railtie'
 require 'active_record/railtie'
 require 'action_controller/railtie'
