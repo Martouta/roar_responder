@@ -12,7 +12,8 @@ class InstanceController < ApplicationController
   end
 
   def post_active_record_entity
-    entity = DummyActiveRecordModel.create!(**params[:model].permit!)
+    attributes = params[:model].permit!.to_h.symbolize_keys
+    entity = DummyActiveRecordModel.create!(**attributes)
     respond_with entity, representer_class: DummyRepresenter
   end
 
