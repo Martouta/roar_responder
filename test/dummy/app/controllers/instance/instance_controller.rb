@@ -13,5 +13,20 @@ module Instance
     def create
       respond_with new_entity, representer_class: DummyRepresenter
     end
+
+    private
+    
+    def find_entity
+      record_class.find(params[:id])
+    end
+
+    def collection
+      record_class.all
+    end
+
+    def new_entity
+      attributes = params[:model].permit!.to_h.symbolize_keys
+      record_class.create(**attributes)
+    end
   end
 end
