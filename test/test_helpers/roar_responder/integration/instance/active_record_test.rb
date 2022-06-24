@@ -6,22 +6,53 @@ module Integration
   module Instance
     class ActiveRecordTest < ActionDispatch::IntegrationTest
       def test_get_entity
-        example_attrs = { dummy_integer: 4, dummy_string: 'bar' }
-
-        DummyActiveRecordModel.create(**example_attrs)
+        DummyActiveRecordModel.create(**dummy_attrs)
 
         get instance_active_record_entity_path, as: :json
+
         assert_response :ok
-        actual_response = JSON.parse(response.body)
-        response_id = actual_response.dig('dummy', 'id')
+        assert_response_entity JSON.parse(response.body)
+      end
+
+      def test_get_collection
+        collection_size = 2
+        collection_size.times { DummyActiveRecordModel.create(**dummy_attrs) }
+
+        get instance_active_record_collection_path, as: :json
+
+        assert_response :ok
+
+        response_collection = JSON.parse(response.body)
+
+        assert_self_link(response_collection, 'dummy_collection', '/collection')
+
+        items = response_collection.dig('dummy_collection', 'items') || []
+        assert_equal collection_size, items.length
+        items.each(&method(:assert_response_entity))
+      end
+
+      private
+
+      def assert_response_entity(response_entity)
+        response_id = response_entity.dig('dummy', 'id')
         assert_instance_of Integer, response_id
-        assert_equal example_attrs[:dummy_integer], actual_response.dig('dummy', 'dummy_integer')
-        assert_equal example_attrs[:dummy_string], actual_response.dig('dummy', 'dummy_string')
-        response_created_at = Time.parse(actual_response['dummy']['created_at'])
+        assert_equal dummy_attrs[:dummy_integer], response_entity.dig('dummy', 'dummy_integer')
+        assert_equal dummy_attrs[:dummy_string], response_entity.dig('dummy', 'dummy_string')
+
+        response_created_at = Time.parse(response_entity['dummy']['created_at'])
         assert_in_delta Time.now, response_created_at, 2.seconds
-        self_link = actual_response['dummy']['links'][0]
-        assert_equal "example/#{response_id}", self_link['href']
+
+        assert_self_link(response_entity, 'dummy',  "example/#{response_id}")
+      end
+
+      def assert_self_link(parsed_json, root_wrap, expected_url)
+        self_link = parsed_json.dig(root_wrap, 'links', 0)
+        assert_equal expected_url, self_link['href']
         assert_equal 'self', self_link['rel']
+      end
+
+      def dummy_attrs
+        { dummy_integer: 4, dummy_string: 'bar' }
       end
     end
   end

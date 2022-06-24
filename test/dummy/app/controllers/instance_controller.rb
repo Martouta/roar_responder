@@ -6,11 +6,12 @@ class InstanceController < ApplicationController
     respond_with entity, representer_class: DummyRepresenter
   end
 
-  def post_active_record_entity
-    render json: {}
+  def get_active_record_collection
+    collection = DummyActiveRecordModel.all
+    respond_with collection, representer_class: DummyCollectionRepresenter
   end
 
-  def get_active_record_collection
+  def post_active_record_entity
     render json: {}
   end
 

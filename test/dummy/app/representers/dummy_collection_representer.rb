@@ -9,5 +9,5 @@ class DummyCollectionRepresenter < ApplicationRepresenter
     '/collection'
   end
 
-  collection :to_a, wrap: false, as: :items, decorator: DummyRepresenter
+  collection :to_a, as: :items, decorator: DummyRepresenter
 end
