@@ -34,14 +34,17 @@ class InstanceController < ApplicationController
   end
 
   def get_poro_entity
-    render json: {}
+    entity = DummyPoro.new
+    respond_with entity, representer_class: DummyRepresenter
   end
-
-  def post_poro_entity
-    render json: {}
-  end
-
+  
   def get_poro_collection
-    render json: {}
+    collection = Array.new(2) { DummyPoro.new }
+    respond_with collection, representer_class: DummyCollectionRepresenter
+  end
+  
+  def post_poro_entity
+    entity = DummyPoro.new(dummy_string: params[:model][:dummy_string], valid: (params[:model][:dummy_string] != 'invalid'))
+    respond_with entity, representer_class: DummyRepresenter
   end
 end
