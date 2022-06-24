@@ -18,7 +18,7 @@ class InstanceController < ApplicationController
   end
 
   def get_mongo_entity
-    entity = DummyMongoModel.last!
+    entity = DummyMongoModel.last
     respond_with entity, representer_class: DummyRepresenter
   end
   

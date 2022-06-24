@@ -50,7 +50,7 @@ module Integration
 
       def assert_response_entity(response_entity)
         response_id = response_entity.dig('dummy', 'id')
-        assert_instance_of Integer, response_id
+        assert_instance_of String, response_id
         assert_equal dummy_attrs[:dummy_integer], response_entity.dig('dummy', 'dummy_integer')
         assert_equal dummy_attrs[:dummy_string], response_entity.dig('dummy', 'dummy_string')
 
