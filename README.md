@@ -18,6 +18,10 @@ And then execute:
 bundle install
 ```
 
+## Dependencies
+
+TODO
+
 ## Usage
 
 Require adding the following line to `config/application.rb` for the root of a Rails app or in `lib/{YOUR_ENGINE}/engine.rb` for a Rails::Engine.
