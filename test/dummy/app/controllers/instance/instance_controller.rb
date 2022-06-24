@@ -25,8 +25,11 @@ module Instance
     end
 
     def new_entity
-      attributes = params[:model].permit!.to_h.symbolize_keys
       record_class.create(**attributes)
+    end
+
+    def attributes
+      params[:model].permit!.to_h.symbolize_keys
     end
   end
 end

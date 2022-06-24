@@ -6,7 +6,7 @@ class DummyPoro
   include ActiveModel::Conversion # Respond to to_model
   extend ActiveModel::Naming # Respond to model_name
 
-  def initialize(dummy_integer: 42, dummy_string: 'foo', valid: true)
+  def initialize(dummy_integer: 42, dummy_string: 'bar', valid: true)
     @dummy_integer = dummy_integer
     @dummy_string = dummy_string
     @created_at = Time.now
@@ -25,7 +25,7 @@ class DummyPoro
     errors = ActiveModel::Errors.new(self)
     return errors if valid?
 
-    errors.add(:base, 'invalid')
+    errors.add(:dummy_string, 'invalid')
     errors
   end
 

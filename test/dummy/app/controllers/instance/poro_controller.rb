@@ -13,8 +13,8 @@ module Instance
     end
 
     def new_entity
-      entity = DummyPoro.new(dummy_string: params[:model][:dummy_string],
-                             valid: (params[:model][:dummy_string] != 'invalid'))
+      attrs = attributes.merge(valid: (params[:model][:dummy_string] != 'invalid'))
+      DummyPoro.new(**attrs)
     end
   end
 end
