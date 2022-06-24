@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'time'
-
 class DummyPoro
   include ActiveModel::Conversion # Respond to to_model
   extend ActiveModel::Naming # Respond to model_name
@@ -31,5 +29,17 @@ class DummyPoro
 
   def id
     persisted? ? 1 : nil
+  end
+
+  class << self
+    alias create new
+
+    def find(*)
+      new
+    end
+
+    def all
+      Array.new(2) { new }
+    end
   end
 end

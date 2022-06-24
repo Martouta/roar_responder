@@ -4,17 +4,12 @@ module Instance
   class PoroController < InstanceController
     private
 
-    def find_entity
-      DummyPoro.new
+    def record_class
+      DummyPoro
     end
 
-    def collection
-      Array.new(2) { DummyPoro.new }
-    end
-
-    def new_entity
-      attrs = attributes.merge(valid: (params[:model][:dummy_string] != 'invalid'))
-      DummyPoro.new(**attrs)
+    def attributes
+      super.merge(valid: (params[:model][:dummy_string] != 'invalid'))
     end
   end
 end
