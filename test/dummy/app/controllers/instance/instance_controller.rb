@@ -15,7 +15,7 @@ module Instance
     end
 
     private
-    
+
     def find_entity
       record_class.find(params[:id])
     end

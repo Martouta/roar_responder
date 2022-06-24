@@ -3,7 +3,7 @@
 module Instance
   class PoroController < InstanceController
     private
-    
+
     def find_entity
       DummyPoro.new
     end
@@ -14,7 +14,7 @@ module Instance
 
     def new_entity
       entity = DummyPoro.new(dummy_string: params[:model][:dummy_string],
-        valid: (params[:model][:dummy_string] != 'invalid'))
+                             valid: (params[:model][:dummy_string] != 'invalid'))
     end
   end
 end
