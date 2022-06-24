@@ -12,4 +12,8 @@ class DummyMongoModel
     in: %w[foo bar baz],
     message: 'invalid'
   }, allow_nil: true
+
+  def id
+    _id.to_s
+  end
 end
