@@ -2,7 +2,7 @@
 
 class InstanceController < ApplicationController
   def get_active_record_entity
-    entity = DummyActiveRecordModel.last!
+    entity = DummyActiveRecordModel.last
     respond_with entity, representer_class: DummyRepresenter
   end
 
