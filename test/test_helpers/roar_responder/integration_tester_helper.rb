@@ -8,7 +8,7 @@ module RoarResponder
       def test_get_entity
         setup_get_entity_request
 
-        perform_get_entity_request
+        get entity_path, as: :json
 
         assert_response :ok
         assert_response_entity JSON.parse(response.body), root_entity_wrap
@@ -57,12 +57,12 @@ module RoarResponder
         'dummy'
       end
 
-      def perform_get_entity_request
-        raise NoMethodError, __method__
-      end
-
       def root_collection_wrap
         'dummy_collection'
+      end
+
+      def entity_path
+        raise NoMethodError, __method__
       end
 
       def collection_path

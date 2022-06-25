@@ -15,8 +15,8 @@ module Integration
         'dummy_active_record_infer'
       end
 
-      def perform_get_entity_request
-        get infer_active_record_path(entity), as: :json
+      def entity_path
+        infer_active_record_path(entity)
       end
 
       def root_collection_wrap

@@ -15,8 +15,8 @@ module Integration
         'dummy_poro_infer'
       end
 
-      def perform_get_entity_request
-        get infer_poro_path(id: 1), as: :json
+      def entity_path
+        infer_poro_path(entity)
       end
 
       def root_collection_wrap

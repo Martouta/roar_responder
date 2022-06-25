@@ -15,8 +15,8 @@ module Integration
         'dummy_mongo_infer'
       end
 
-      def perform_get_entity_request
-        get infer_mongo_path(entity), as: :json
+      def entity_path
+        infer_mongo_path(entity)
       end
 
       def root_collection_wrap

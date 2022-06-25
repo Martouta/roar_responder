@@ -11,8 +11,8 @@ module Integration
         DummyPoro
       end
 
-      def perform_get_entity_request
-        get class_spec_poro_path(id: 1), as: :json
+      def entity_path
+        class_spec_poro_path(entity)
       end
 
       def collection_path

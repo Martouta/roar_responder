@@ -11,8 +11,8 @@ module Integration
         DummyActiveRecordModel
       end
 
-      def perform_get_entity_request
-        get instance_active_record_path(entity), as: :json
+      def entity_path
+        instance_active_record_path(entity)
       end
 
       def collection_path

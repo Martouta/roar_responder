@@ -11,8 +11,8 @@ module Integration
         DummyMongoModel
       end
 
-      def perform_get_entity_request
-        get instance_mongo_path(entity), as: :json
+      def entity_path
+        instance_mongo_path(entity)
       end
 
       def collection_path
