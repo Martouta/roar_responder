@@ -15,11 +15,7 @@ module Integration
         get class_spec_mongo_path(entity), as: :json
       end
 
-      def perform_get_collection_request
-        get class_spec_mongo_index_path, as: :json
-      end
-
-      def create_path
+      def collection_path
         class_spec_mongo_index_path
       end
     end

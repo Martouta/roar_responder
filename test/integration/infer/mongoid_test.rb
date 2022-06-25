@@ -23,11 +23,7 @@ module Integration
         'dummy_mongo_collection_infer'
       end
 
-      def perform_get_collection_request
-        get infer_mongo_index_path, as: :json
-      end
-
-      def create_path
+      def collection_path
         infer_mongo_index_path
       end
     end

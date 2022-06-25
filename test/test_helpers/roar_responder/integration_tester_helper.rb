@@ -17,21 +17,21 @@ module RoarResponder
       def test_get_collection
         collection_size.times { setup_get_entity_request }
 
-        perform_get_collection_request
+        get collection_path, as: :json
 
         assert_response :ok
         assert_response_collection JSON.parse(response.body), root_collection_wrap
       end
 
       def test_post_entity_success
-        post create_path, params: { model: dummy_attrs }, as: :json
+        post collection_path, params: { model: dummy_attrs }, as: :json
 
         assert_response :created
         assert_response_entity JSON.parse(response.body), root_entity_wrap
       end
 
       def test_post_entity_failure
-        post create_path, params: { model: dummy_invalid_attrs }, as: :json
+        post collection_path, params: { model: dummy_invalid_attrs }, as: :json
 
         assert_response :unprocessable_entity
         assert_response_error JSON.parse(response.body)
@@ -65,11 +65,7 @@ module RoarResponder
         'dummy_collection'
       end
 
-      def perform_get_collection_request
-        raise NoMethodError, __method__
-      end
-
-      def create_path
+      def collection_path
         raise NoMethodError, __method__
       end
     end

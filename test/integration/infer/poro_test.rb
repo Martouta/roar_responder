@@ -23,11 +23,7 @@ module Integration
         'dummy_poro_collection_infer'
       end
 
-      def perform_get_collection_request
-        get infer_poro_index_path, as: :json
-      end
-
-      def create_path
+      def collection_path
         infer_poro_index_path
       end
     end

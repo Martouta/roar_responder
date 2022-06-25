@@ -15,11 +15,7 @@ module Integration
         get instance_poro_path(id: 1), as: :json
       end
 
-      def perform_get_collection_request
-        get instance_poro_index_path, as: :json
-      end
-
-      def create_path
+      def collection_path
         instance_poro_index_path
       end
     end
