@@ -9,7 +9,7 @@ module Integration
         get class_spec_poro_path(id: 1), as: :json
 
         assert_response :ok
-        assert_response_entity JSON.parse(response.body)
+        assert_response_entity JSON.parse(response.body), 'dummy'
       end
 
       def test_get_collection
@@ -30,7 +30,7 @@ module Integration
         post class_spec_poro_index_path, params: { model: dummy_attrs }, as: :json
 
         assert_response :created
-        assert_response_entity JSON.parse(response.body)
+        assert_response_entity JSON.parse(response.body), 'dummy'
       end
 
       def test_post_entity_failure
