@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   namespace 'infer' do
-    resources :poro, only: %i[show create]
+    resources :poro, only: %i[show index create]
   end
 
   namespace 'instance' do

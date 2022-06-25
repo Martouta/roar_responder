@@ -6,6 +6,10 @@ module Infer
       respond_with find_entity
     end
 
+    def index
+      respond_with collection
+    end
+
     def create
       respond_with new_entity
     end
@@ -14,6 +18,10 @@ module Infer
 
     def find_entity
       record_class.find(params[:id])
+    end
+
+    def collection
+      record_class.all
     end
 
     def new_entity
