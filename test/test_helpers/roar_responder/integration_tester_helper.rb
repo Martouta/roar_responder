@@ -15,7 +15,7 @@ module RoarResponder
       end
 
       def test_get_collection
-        setup_get_collection_request
+        collection_size.times { setup_get_entity_request }
 
         perform_get_collection_request
 

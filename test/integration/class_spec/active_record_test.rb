@@ -17,10 +17,6 @@ module Integration
         get class_spec_active_record_path(entity), as: :json
       end
 
-      def setup_get_collection_request
-        collection_size.times { setup_get_entity_request }
-      end
-
       def perform_get_collection_request
         get class_spec_active_record_index_path, as: :json
       end
