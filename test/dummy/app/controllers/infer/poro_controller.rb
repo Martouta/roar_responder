@@ -2,10 +2,6 @@
 
 module Infer
   class PoroController < InferController
-    private
-
-    def record_class
-      DummyPoro
-    end
+    include PoroControllable
   end
 end
