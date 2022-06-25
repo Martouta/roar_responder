@@ -5,44 +5,28 @@ require 'test_helper'
 module Integration
   module Instance
     class ActiveRecordTest < ActionDispatch::IntegrationTest
-      def test_get_entity
-        entity = DummyActiveRecordModel.create(**dummy_attrs)
+      include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
+      def setup_get_entity_request
+        @entity = DummyActiveRecordModel.create(**dummy_attrs)
+      end
+
+      attr_reader :entity
+
+      def perform_get_entity_request
         get instance_active_record_path(entity), as: :json
-
-        assert_response :ok
-        assert_response_entity JSON.parse(response.body), 'dummy'
       end
 
-      def test_get_collection
-        collection_size = 2
-        collection_size.times { DummyActiveRecordModel.create(**dummy_attrs) }
+      def setup_get_collection_request
+        collection_size.times { setup_get_entity_request }
+      end
 
+      def perform_get_collection_request
         get instance_active_record_index_path, as: :json
-
-        assert_response :ok
-
-        response_collection = JSON.parse(response.body)
-
-        assert_self_link(response_collection, 'dummy_collection', '/collection')
-
-        items = response_collection.dig('dummy_collection', 'items') || []
-        assert_equal collection_size, items.length
-        items.each(&method(:assert_response_entity))
       end
 
-      def test_post_entity_success
-        post instance_active_record_index_path, params: { model: dummy_attrs }, as: :json
-
-        assert_response :created
-        assert_response_entity JSON.parse(response.body), 'dummy'
-      end
-
-      def test_post_entity_failure
-        post instance_active_record_index_path, params: { model: dummy_invalid_attrs }, as: :json
-
-        assert_response :unprocessable_entity
-        assert_response_error JSON.parse(response.body)
+      def create_path
+        instance_active_record_index_path
       end
     end
   end
