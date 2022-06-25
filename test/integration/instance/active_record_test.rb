@@ -39,8 +39,7 @@ module Integration
       end
 
       def test_post_entity_failure
-        post instance_active_record_index_path, params: { model: dummy_attrs.merge('dummy_string' => 'invalid') },
-                                                as: :json
+        post instance_active_record_index_path, params: { model: dummy_invalid_attrs }, as: :json
 
         assert_response :unprocessable_entity
         assert_response_error JSON.parse(response.body)
