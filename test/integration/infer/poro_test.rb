@@ -15,16 +15,16 @@ module Integration
         'dummy_poro_infer'
       end
 
-      def entity_path
-        infer_poro_path(entity)
-      end
-
       def root_collection_wrap
         'dummy_poro_collection_infer'
       end
 
-      def collection_path
-        infer_poro_index_path
+      def namespace
+        'infer'
+      end
+
+      def orm
+        'poro'
       end
     end
   end

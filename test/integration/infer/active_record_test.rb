@@ -15,16 +15,16 @@ module Integration
         'dummy_active_record_infer'
       end
 
-      def entity_path
-        infer_active_record_path(entity)
-      end
-
       def root_collection_wrap
         'dummy_active_record_collection_infer'
       end
 
-      def collection_path
-        infer_active_record_index_path
+      def namespace
+        'infer'
+      end
+
+      def orm
+        'active_record'
       end
     end
   end

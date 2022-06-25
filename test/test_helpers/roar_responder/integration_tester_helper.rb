@@ -62,11 +62,11 @@ module RoarResponder
       end
 
       def entity_path
-        raise NoMethodError, __method__
+        public_send("#{namespace}_#{orm}_path", entity)
       end
 
       def collection_path
-        raise NoMethodError, __method__
+        public_send("#{namespace}_#{orm}_index_path")
       end
     end
   end

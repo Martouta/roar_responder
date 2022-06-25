@@ -15,16 +15,16 @@ module Integration
         'dummy_mongo_infer'
       end
 
-      def entity_path
-        infer_mongo_path(entity)
-      end
-
       def root_collection_wrap
         'dummy_mongo_collection_infer'
       end
 
-      def collection_path
-        infer_mongo_index_path
+      def namespace
+        'infer'
+      end
+
+      def orm
+        'mongo'
       end
     end
   end

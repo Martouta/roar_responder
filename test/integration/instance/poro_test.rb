@@ -11,12 +11,12 @@ module Integration
         DummyPoro
       end
 
-      def entity_path
-        instance_poro_path(entity)
+      def namespace
+        'instance'
       end
 
-      def collection_path
-        instance_poro_index_path
+      def orm
+        'poro'
       end
     end
   end

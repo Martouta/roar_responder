@@ -11,12 +11,12 @@ module Integration
         DummyMongoModel
       end
 
-      def entity_path
-        instance_mongo_path(entity)
+      def namespace
+        'instance'
       end
 
-      def collection_path
-        instance_mongo_index_path
+      def orm
+        'mongo'
       end
     end
   end

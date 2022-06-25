@@ -11,12 +11,12 @@ module Integration
         DummyActiveRecordModel
       end
 
-      def entity_path
-        class_spec_active_record_path(entity)
+      def namespace
+        'class_spec'
       end
 
-      def collection_path
-        class_spec_active_record_index_path
+      def orm
+        'active_record'
       end
     end
   end
