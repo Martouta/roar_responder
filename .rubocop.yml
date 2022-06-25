@@ -2,6 +2,8 @@ AllCops:
   TargetRubyVersion: 2.6
   NewCops: enable
   SuggestExtensions: false
+  Exclude:
+    - 'test/dummy/bin/bundle'
 
 Layout/LineLength:
   Max: 120

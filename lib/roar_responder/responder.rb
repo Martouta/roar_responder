@@ -30,7 +30,7 @@ module RoarResponder
     end
 
     def collection?
-      resource.respond_to?(:length)
+      resource.respond_to?(:count)
     end
   end
 end
