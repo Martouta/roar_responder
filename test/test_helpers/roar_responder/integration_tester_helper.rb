@@ -20,11 +20,7 @@ module RoarResponder
         perform_get_collection_request
 
         assert_response :ok
-        response_collection = JSON.parse(response.body)
-        assert_self_link(response_collection, root_collection_wrap, '/collection')
-        items = response_collection.dig(root_collection_wrap, 'items') || []
-        assert_equal collection_size, items.length
-        items.each(&method(:assert_response_entity))
+        assert_response_collection JSON.parse(response.body), root_collection_wrap
       end
 
       def test_post_entity_success

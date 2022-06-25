@@ -3,6 +3,13 @@
 module RoarResponder
   module TestHelpers
     module AssertResponseHelper
+      def assert_response_collection(response_collection, root_collection_wrap)
+        assert_self_link(response_collection, root_collection_wrap, '/collection')
+        items = response_collection.dig(root_collection_wrap, 'items') || []
+        assert_equal collection_size, items.length
+        items.each(&method(:assert_response_entity))
+      end
+
       def assert_response_entity(response_entity, root_wrap = 'dummy')
         response_id = response_entity.dig(root_wrap, 'id')
         assert response_id.present?
