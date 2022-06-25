@@ -39,28 +39,30 @@ module RoarResponder
 
       private
 
-      def root_entity_wrap
-        'dummy'
+      def setup_get_entity_request
+        @entity = model_class.create(**dummy_attrs)
       end
 
-      def setup_get_entity_request
-        # NOOP :)
+      attr_reader :entity
+
+      def collection_size
+        2
+      end
+
+      def model_class
+        raise NoMethodError, __method__
+      end
+
+      def root_entity_wrap
+        'dummy'
       end
 
       def perform_get_entity_request
         raise NoMethodError, __method__
       end
 
-      def collection_size
-        2
-      end
-
       def root_collection_wrap
         'dummy_collection'
-      end
-
-      def setup_get_collection_request
-        # NOOP :)
       end
 
       def perform_get_collection_request

@@ -7,11 +7,9 @@ module Integration
     class ActiveRecordTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
-      def setup_get_entity_request
-        @entity = DummyActiveRecordModel.create(**dummy_attrs)
+      def model_class
+        DummyActiveRecordModel
       end
-
-      attr_reader :entity
 
       def perform_get_entity_request
         get class_spec_active_record_path(entity), as: :json

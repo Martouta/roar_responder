@@ -7,11 +7,9 @@ module Integration
     class MongoidTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
-      def setup_get_entity_request
-        @entity = DummyMongoModel.create(**dummy_attrs)
+      def model_class
+        DummyMongoModel
       end
-
-      attr_reader :entity
 
       def root_entity_wrap
         'dummy_mongo_infer'

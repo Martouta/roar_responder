@@ -7,11 +7,9 @@ module Integration
     class ActiveRecordTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
-      def setup_get_entity_request
-        @entity = DummyActiveRecordModel.create(**dummy_attrs)
+      def model_class
+        DummyActiveRecordModel
       end
-
-      attr_reader :entity
 
       def root_entity_wrap
         'dummy_active_record_infer'

@@ -7,6 +7,10 @@ module Integration
     class PoroTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
+      def model_class
+        DummyPoro
+      end
+
       def perform_get_entity_request
         get instance_poro_path(id: 1), as: :json
       end

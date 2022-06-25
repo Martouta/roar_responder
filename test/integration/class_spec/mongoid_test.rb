@@ -7,11 +7,9 @@ module Integration
     class MongoidTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
-      def setup_get_entity_request
-        @entity = DummyMongoModel.create(**dummy_attrs)
+      def model_class
+        DummyMongoModel
       end
-
-      attr_reader :entity
 
       def perform_get_entity_request
         get class_spec_mongo_path(entity), as: :json
