@@ -7,12 +7,15 @@ module RoarResponder
         response_id = response_entity.dig(root_wrap, 'id')
         assert response_id.present?
         assert_equal dummy_attrs[:dummy_integer], response_entity.dig(root_wrap, 'dummy_integer')
-        assert_equal dummy_attrs[:dummy_string], response_entity.dig(root_wrap, 'dummy_string')
+        assert_equal dummy_attrs[:dummy_string],  response_entity.dig(root_wrap, 'dummy_string')
 
+        assert_created_at(response_entity, root_wrap)
+        assert_self_link(response_entity, root_wrap, "example/#{response_id}")
+      end
+
+      def assert_created_at(response_entity, root_wrap)
         response_created_at = Time.parse(response_entity[root_wrap]['created_at'])
         assert_in_delta Time.now, response_created_at, 2.seconds
-
-        assert_self_link(response_entity, root_wrap, "example/#{response_id}")
       end
 
       def assert_self_link(parsed_json, root_wrap, expected_url)
