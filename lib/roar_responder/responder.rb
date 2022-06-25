@@ -18,11 +18,11 @@ module RoarResponder
     end
 
     def infer_representer
-      if collection?
-        "#{resource.model_name}_collection_representer".camelize.safe_constantize if resource.respond_to?(:model_name)
-      else
-        "#{resource.model_name}_representer".camelize.safe_constantize
-      end
+      model_name = resource.try(:model_name)
+      return unless model_name
+
+      representer_name = "#{resource.model_name}#{"Collection" if collection?}Representer"
+      representer_name.safe_constantize
     end
 
     def representable_type
