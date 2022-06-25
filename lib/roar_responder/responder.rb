@@ -30,11 +30,7 @@ module RoarResponder
     end
 
     def collection?
-      return true if resource.is_a?(Array) || resource.respond_to?(:length)
-      return true if Object.const_defined?('ActiveRecord') && resource.is_a?(ActiveRecord::Relation)
-      return true if Object.const_defined?('Mongoid') && resource.is_a?(Mongoid::Criteria)
-
-      false
+      resource.respond_to?(:length)
     end
   end
 end
