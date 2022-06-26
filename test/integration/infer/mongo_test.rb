@@ -7,10 +7,6 @@ module Integration
     class MongoTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
-      def model_class
-        DummyMongoModel
-      end
-
       def root_entity_wrap
         'dummy_mongo_infer'
       end

@@ -39,7 +39,14 @@ module RoarResponder
 
       private
 
+      ORM_MODEL_CLASS = {
+        'active_record' => DummyActiveRecordModel,
+        'mongo' => DummyMongoModel,
+        'poro' => DummyPoro
+      }.freeze
+
       def setup_get_entity_request
+        model_class = ORM_MODEL_CLASS[orm_type]
         @entity = model_class.create(**dummy_attrs)
       end
 
@@ -47,10 +54,6 @@ module RoarResponder
 
       def collection_size
         2
-      end
-
-      def model_class
-        raise NoMethodError, __method__
       end
 
       def root_entity_wrap

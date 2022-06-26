@@ -7,10 +7,6 @@ module Integration
     class ActiveRecordTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
-      def model_class
-        DummyActiveRecordModel
-      end
-
       def root_entity_wrap
         'dummy_active_record_infer'
       end
