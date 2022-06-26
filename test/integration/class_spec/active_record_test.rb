@@ -11,10 +11,6 @@ module Integration
         DummyActiveRecordModel
       end
 
-      def namespace
-        'class_spec'
-      end
-
       def orm
         'active_record'
       end

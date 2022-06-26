@@ -19,10 +19,6 @@ module Integration
         'dummy_mongo_collection_infer'
       end
 
-      def namespace
-        'infer'
-      end
-
       def orm
         'mongo'
       end

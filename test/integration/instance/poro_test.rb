@@ -11,10 +11,6 @@ module Integration
         DummyPoro
       end
 
-      def namespace
-        'instance'
-      end
-
       def orm
         'poro'
       end

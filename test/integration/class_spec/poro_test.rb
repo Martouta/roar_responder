@@ -11,10 +11,6 @@ module Integration
         DummyPoro
       end
 
-      def namespace
-        'class_spec'
-      end
-
       def orm
         'poro'
       end

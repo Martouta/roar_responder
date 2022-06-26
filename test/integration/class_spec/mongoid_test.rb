@@ -11,10 +11,6 @@ module Integration
         DummyMongoModel
       end
 
-      def namespace
-        'class_spec'
-      end
-
       def orm
         'mongo'
       end

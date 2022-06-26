@@ -19,10 +19,6 @@ module Integration
         'dummy_active_record_collection_infer'
       end
 
-      def namespace
-        'infer'
-      end
-
       def orm
         'active_record'
       end

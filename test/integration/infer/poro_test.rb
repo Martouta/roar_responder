@@ -19,10 +19,6 @@ module Integration
         'dummy_poro_collection_infer'
       end
 
-      def namespace
-        'infer'
-      end
-
       def orm
         'poro'
       end
