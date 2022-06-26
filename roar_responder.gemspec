@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
     'rubygems_mfa_required' => 'true'
   }
 
-  spec.files = Dir['lib}/**/*', 'Rakefile', 'LICENSE']
+  spec.files = Dir['lib/**/*', 'Rakefile', 'LICENSE', 'README.md']
   spec.require_paths = ['lib']
 
   spec.add_dependency 'multi_json', '~> 1.15.0'
