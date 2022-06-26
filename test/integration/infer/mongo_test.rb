@@ -4,7 +4,7 @@ require 'test_helper'
 
 module Integration
   module Infer
-    class PoroTest < ActionDispatch::IntegrationTest
+    class MongoTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
     end
   end

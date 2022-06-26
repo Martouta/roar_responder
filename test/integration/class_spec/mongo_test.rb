@@ -3,8 +3,8 @@
 require 'test_helper'
 
 module Integration
-  module Infer
-    class PoroTest < ActionDispatch::IntegrationTest
+  module ClassSpec
+    class MongoTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
     end
   end
