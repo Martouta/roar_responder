@@ -56,14 +56,6 @@ module RoarResponder
         2
       end
 
-      def root_entity_wrap
-        'dummy'
-      end
-
-      def root_collection_wrap
-        'dummy_collection'
-      end
-
       def entity_path
         public_send("#{route_namespace}_#{orm_type}_path", entity)
       end
