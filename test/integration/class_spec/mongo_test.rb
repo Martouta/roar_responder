@@ -4,15 +4,11 @@ require 'test_helper'
 
 module Integration
   module ClassSpec
-    class MongoidTest < ActionDispatch::IntegrationTest
+    class MongoTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
       def model_class
         DummyMongoModel
-      end
-
-      def orm
-        'mongo'
       end
     end
   end

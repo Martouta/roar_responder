@@ -62,15 +62,19 @@ module RoarResponder
       end
 
       def entity_path
-        public_send("#{route_namespace}_#{orm}_path", entity)
+        public_send("#{route_namespace}_#{orm_type}_path", entity)
       end
 
       def collection_path
-        public_send("#{route_namespace}_#{orm}_index_path")
+        public_send("#{route_namespace}_#{orm_type}_index_path")
       end
 
       def route_namespace
         self.class.name.match(/\w+::(\w+)::\w+/)[1].underscore
+      end
+
+      def orm_type
+        self.class.name.match(/\w+::\w+::(\w+)/)[1].underscore.sub('_test', '')
       end
     end
   end

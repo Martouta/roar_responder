@@ -4,7 +4,7 @@ require 'test_helper'
 
 module Integration
   module Infer
-    class MongoidTest < ActionDispatch::IntegrationTest
+    class MongoTest < ActionDispatch::IntegrationTest
       include ::RoarResponder::TestHelpers::IntegrationTesterHelper
 
       def model_class
@@ -17,10 +17,6 @@ module Integration
 
       def root_collection_wrap
         'dummy_mongo_collection_infer'
-      end
-
-      def orm
-        'mongo'
       end
     end
   end

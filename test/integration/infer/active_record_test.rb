@@ -18,10 +18,6 @@ module Integration
       def root_collection_wrap
         'dummy_active_record_collection_infer'
       end
-
-      def orm
-        'active_record'
-      end
     end
   end
 end

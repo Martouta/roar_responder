@@ -10,10 +10,6 @@ module Integration
       def model_class
         DummyActiveRecordModel
       end
-
-      def orm
-        'active_record'
-      end
     end
   end
 end

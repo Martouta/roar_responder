@@ -18,10 +18,6 @@ module Integration
       def root_collection_wrap
         'dummy_poro_collection_infer'
       end
-
-      def orm
-        'poro'
-      end
     end
   end
 end
