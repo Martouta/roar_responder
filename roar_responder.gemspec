@@ -3,7 +3,7 @@
 require_relative 'lib/roar_responder/version'
 
 Gem::Specification.new do |spec|
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 2.6'
 
   spec.name        = 'roar_responder'
   spec.version     = RoarResponder::VERSION
@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'multi_json', '~> 1.15.0'
-  spec.add_dependency 'rails', '>= 5.2', '<= 7.0'
+  spec.add_dependency 'rails', '>= 5.2', '< 7.1'
   spec.add_dependency 'responders', '~> 3.0'
   spec.add_dependency 'roar', '~> 1.1.0'
 

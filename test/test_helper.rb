@@ -13,7 +13,7 @@ require 'minitest/autorun'
 require 'database_cleaner/active_record'
 require 'database_cleaner/mongoid'
 
-Dir["#{File.dirname(__FILE__)}/test_helpers/roar_responder/**/*.rb"].sort.each { |file| require file }
+Dir["#{File.dirname(__FILE__)}/test_helpers/roar_responder/**/*.rb"].each { |file| require file }
 
 module ActionDispatch
   class IntegrationTest

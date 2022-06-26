@@ -6,6 +6,6 @@ ActiveRecord::Schema.define(version: 0) do
   create_table 'dummy_active_record_model', force: :cascade do |t|
     t.string 'dummy_string'
     t.integer 'dummy_integer'
-    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'created_at', null: false
   end
 end

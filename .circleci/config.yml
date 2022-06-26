@@ -1,25 +1,88 @@
+version: 2.1
+
+mongodb-container: &mongodb-container
+  image: mongo:5.0.3
+
+postgresql-container: &postgresql-container
+  image: postgres:13.2
+  environment:
+    POSTGRES_PASSWORD: password
+
+commands:
+  roar-responder-command:
+    steps:
+      - run:
+          name: Install root gems
+          command: cd /root/project && bundle install
+      - run:
+          name: Setup Dummy
+          command: cd /root/project/test/dummy && ./bin/setup
+      - run:
+          name: Run tests
+          command: cd /root/project && bundle exec rake test
+
 jobs:
-  roar-responder-job:
+  roar-responder-ruby-2-6-rails-5-2-job:
     docker:
-      - image: ruby:2.6
-      - image: mongo:5.0.3
-      - environment:
-          POSTGRES_PASSWORD: password
-        image: postgres:13.2
+      - image: ruby:2.6.10
+      - *mongodb-container
+      - *postgresql-container
     resource_class: small
     steps:
       - checkout
       - run:
-          name: Install root gems
-          command: bundle install
+          name: Configure Ruby and Rails version files
+          command: |
+            cd /root/project
+            echo "2.6.10" > .ruby-version
+            echo "5.2.8"  > .rails-version
+      - roar-responder-command
+  roar-responder-ruby-2-7-rails-6-1-job:
+    docker:
+      - image: ruby:2.7.3
+      - *mongodb-container
+      - *postgresql-container
+    resource_class: small
+    steps:
+      - checkout
       - run:
-          name: Setup Dummy
-          command: ./test/dummy/bin/setup
+          name: Configure Ruby and Rails version files
+          command: |
+            cd /root/project
+            echo "2.7.3" > .ruby-version
+            echo "6.1.6" > .rails-version
+      - roar-responder-command
+  roar-responder-ruby-3-1-rails-7-0-job:
+    docker:
+      - image: ruby:3.1.2
+      - *mongodb-container
+      - *postgresql-container
+    resource_class: small
+    steps:
+      - checkout
       - run:
-          name: Run tests
-          command: bundle exec rake test
-version: 2.1
+          name: Configure Ruby and Rails version files
+          command: |
+            cd /root/project
+            echo "3.1.2" > .ruby-version
+            echo "7.0.3" > .rails-version
+      - roar-responder-command
+
 workflows:
-  roar-responder-workflow:
+  roar-responder-ruby-2-6-rails-5-2-workflow:
     jobs:
-      - roar-responder-job
+      - hold:
+          type: approval
+      - roar-responder-ruby-2-6-rails-5-2-job:
+          requires:
+            - hold
+  roar-responder-ruby-2-7-rails-6-1-workflow:
+    jobs:
+      - hold:
+          type: approval
+      - roar-responder-ruby-2-7-rails-6-1-job:
+          requires:
+            - hold
+  roar-responder-ruby-3-1-rails-7-0-workflow:
+    jobs:
+      - roar-responder-ruby-3-1-rails-7-0-job

@@ -59,6 +59,6 @@ I usually test like this:
 
 ```bash
 docker-compose up -d
-./test/dummy/bin/setup
+cd test/dummy/ && ./bin/setup && cd ../..
 bundle exec rake test
 ```
